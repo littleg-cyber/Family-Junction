@@ -1,10 +1,10 @@
-import { clientCredentials } from "../utils/client";
+import { clientCredentials } from '../utils/client';
 
-const endpoint = clientCredentials.databaseURL;
+const dbUrl = clientCredentials.databaseURL;
 
 //  GET ALL events
-const getEventss = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/events/.json`, {
+const getEvents = () => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/events/.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -14,3 +14,63 @@ const getEventss = () => new Promise((resolve, reject) => {
     .then((data) => resolve(Object.values(data)))
     .catch(reject);
 });
+
+// CREATE EVENTS
+const createEvents = (payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/events.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+// GET SINGLE EVENT
+const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/events/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updateEvents = (payload) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/answers/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then(resolve)
+    .catch(reject);
+});
+
+const deleteSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${dbUrl}/events/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  getEvents,
+  updateEvents,
+  createEvents,
+  deleteSingleEvent,
+  getSingleEvent,
+};
