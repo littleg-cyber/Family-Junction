@@ -2,7 +2,7 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-//  GET ALL events
+//  GET ALL families
 const getFamilies = () => new Promise((resolve, reject) => {
   fetch(`${dbUrl}/families/.json`, {
     method: 'GET',
@@ -11,7 +11,13 @@ const getFamilies = () => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 
