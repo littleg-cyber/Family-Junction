@@ -17,7 +17,7 @@ function Home() {
     >
       <h1>Welcome, {user.displayName}! </h1>
       <div>
-        <Link href="/family/newFamily" passHref>
+        <Link href="/family/new" passHref>
           <Button variant="outline-primary">Create a family</Button>
         </Link>
         <Link passHref href="/families">
