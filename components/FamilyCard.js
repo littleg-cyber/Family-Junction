@@ -10,6 +10,7 @@ export default function FamilyCard({ familyObj, onUpdate }) {
   // SO WE PASS THE FUNCTION FROM THE PARENT THAT GETS THE BOOKS
   const deleteThisFamily = () => {
     if (window.confirm(`Delete ${familyObj.familyName}?`)) {
+      console.warn('familyObj', familyObj);
       deleteSingleFamily(familyObj.firebaseKey).then(() => onUpdate());
     }
   };
@@ -40,7 +41,6 @@ FamilyCard.propTypes = {
     image: PropTypes.string,
     familyName: PropTypes.string,
     firebaseKey: PropTypes.string,
-    uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

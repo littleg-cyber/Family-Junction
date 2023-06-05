@@ -22,7 +22,7 @@ const getFamilies = () => new Promise((resolve, reject) => {
 });
 
 const getSingleFamily = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/family/${firebaseKey}.json`, {
+  fetch(`${dbUrl}/families/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ const getSingleFamily = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 const createFamily = (payload) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/family.json`, {
+  fetch(`${dbUrl}/families.json`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -42,12 +42,21 @@ const createFamily = (payload) => new Promise((resolve, reject) => {
     body: JSON.stringify(payload),
   })
     .then((response) => response.json())
-    .then((data) => resolve(data))
+    .then((data) => {
+      const setcode = { firebaseKey: data.name };
+      fetch(`${dbUrl}/families/${setcode.firebaseKey}.json`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(setcode),
+      }).then(resolve);
+    })
     .catch(reject);
 });
 
 const deleteSingleFamily = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/family/${firebaseKey}.json`, {
+  fetch(`${dbUrl}/families/${firebaseKey}.json`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -59,7 +68,7 @@ const deleteSingleFamily = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 const updateFamily = (payload) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/family/${payload.firebaseKey}.json`, {
+  fetch(`${dbUrl}/families/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

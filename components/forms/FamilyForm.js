@@ -33,11 +33,11 @@ function FamilyForm({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updateFamily(formInput)
-        .then(() => router.push(`/family/${obj.firebaseKey}`));
+        .then(() => router.push('/families'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createFamily(payload).then(() => {
-        router.push('/');
+        router.push('/families');
       });
     }
   };
