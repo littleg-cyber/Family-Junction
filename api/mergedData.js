@@ -11,6 +11,13 @@ const viewEventDetails = (eventFirebaseKey) => new Promise((resolve, reject) => 
     }).catch((error) => reject(error));
 });
 
+const viewFamilyDetails = (familyFirebaseKey) => new Promise((resolve, reject) => {
+  Promise.all([getSingleFamily(familyFirebaseKey), getFamilyEvents(familyFirebaseKey)])
+    .then(([familyObject, familyEventsArray]) => {
+      resolve({ ...familyObject, events: familyEventsArray });
+    }).catch((error) => reject(error));
+});
+
 const deleteFamilyEvents = (familyId) => new Promise((resolve, reject) => {
   getFamilyEvents(familyId).then((eventsArray) => {
     console.warn(eventsArray, 'Family Events');
@@ -22,4 +29,4 @@ const deleteFamilyEvents = (familyId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export { viewEventDetails, deleteFamilyEvents };
+export { viewEventDetails, deleteFamilyEvents, viewFamilyDetails };
