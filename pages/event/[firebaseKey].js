@@ -20,10 +20,13 @@ export default function ViewEvent() {
       <div className="d-flex flex-column">
         <img src={eventDetails.image} alt={eventDetails.eventTitle} style={{ width: '300px' }} />
       </div>
-      <div className="text-white ms-5 details">
+      <div className="text-black ms-5 details">
         <h5>
-          {eventDetails.eventTitle} by {eventDetails.familyObject?.familyName}
+          {eventDetails.eventTitle}
         </h5>
+        {/* <h6>
+          by the {eventDetails.familyObject?.familyName} family
+        </h6> */}
       </div>
     </div>
   );

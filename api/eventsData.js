@@ -52,7 +52,7 @@ const getSingleEvent = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 const updateEvents = (payload) => new Promise((resolve, reject) => {
-  fetch(`${dbUrl}/answers/${payload.firebaseKey}.json`, {
+  fetch(`${dbUrl}/events/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

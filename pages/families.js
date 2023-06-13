@@ -21,16 +21,15 @@ export default function Families() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/family/new" passHref>
-        <Button>Add A Family</Button>
-      </Link>
       <div className="d-flex flex-wrap">
         {/* map over families here using FamilyCard component */}
         {families.map((family) => (
           <FamilyCard key={family.firebaseKey} familyObj={family} onUpdate={getAllTheFamilies} />
         ))}
       </div>
-
+      <Link href="/family/new" passHref>
+        <Button>Add A Family</Button>
+      </Link>
     </div>
   );
 }
