@@ -28,7 +28,7 @@ export default function Families() {
         ))}
       </div>
       <Link href="/family/new" passHref>
-        <Button>Add A Family</Button>
+        <Button variant="outline-dark">+ New Family</Button>
       </Link>
     </div>
   );

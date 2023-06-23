@@ -137,7 +137,7 @@ function EventForm({ obj }) {
 
       </FloatingLabel>
       {/* SUBMIT BTN */}
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Event</Button>
+      <Button variant="warning" type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Event</Button>
     </Form>
   );
 }

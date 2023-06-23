@@ -30,21 +30,21 @@ export default function Events() {
 
   return (
     <>
-      <div className="text-white ms-5 details">
-        <h5>
-          Family: {familyDetails.familyName}
-        </h5>
+      <div className="text-center text-black ms-5 details">
+
+        <h3>
+          The {familyDetails.familyName} Family
+        </h3>
       </div>
       <div className="text-center my-4">
-        <Link href="/event/new" passHref>
-          <Button variant="primary">Add An Event</Button>
-        </Link>
         <div className="d-flex flex-wrap">
           {events.map((event) => (
             <EventCard key={event.firebaseKey} eventObj={event} onUpdate={getAllFamilyEvents} />
           ))}
         </div>
-
+        <Link href="/event/new" passHref>
+          <Button variant="outline-dark"> + New Event</Button>
+        </Link>
       </div>
     </>
   );

@@ -16,23 +16,25 @@ export default function FamilyCard({ familyObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={familyObj.image} alt={familyObj.familyName} style={{ height: '400px' }} />
-      <Card.Body>
-        <Card.Title>{familyObj.familyName}</Card.Title>
-        {/* DYNAMIC LINK TO VIEW THE BOOK DETAILS  */}
-        <Link href={`/family/${familyObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
-        </Link>
-        {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
-        <Link href={`/family/edit/${familyObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisFamily} className="m-2">
-          DELETE
-        </Button>
-      </Card.Body>
-    </Card>
+    <>
+      <Link href={`/family/${familyObj.firebaseKey}`} passHref>
+        <Card style={{ width: '18rem', margin: '10px' }}>
+          <Card.Img variant="top" src={familyObj.image} alt={familyObj.familyName} style={{ height: '400px' }} />
+          <Card.Body>
+            <Card.Title>{familyObj.familyName}</Card.Title>
+            {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
+            <Link href={`/family/edit/${familyObj.firebaseKey}`} passHref>
+              <Button variant="light" size="sm">📝</Button>
+            </Link>
+            <Button variant="light" size="sm" onClick={deleteThisFamily} className="m-2">
+              🗑️
+            </Button>
+          </Card.Body>
+        </Card>
+      </Link>
+
+    </>
+
   );
 }
 

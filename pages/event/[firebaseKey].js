@@ -16,17 +16,24 @@ export default function ViewEvent() {
   }, [firebaseKey]);
 
   return (
-    <div className="mt-5 d-flex flex-wrap">
+    <div className="mt-5 d-flex flex-row">
       <div className="d-flex flex-column">
         <img src={eventDetails.image} alt={eventDetails.eventTitle} style={{ width: '300px' }} />
-      </div>
-      <div className="text-black ms-5 details">
-        <h5>
+        <h3>
           {eventDetails.eventTitle}
+        </h3>
+      </div>
+      <div className="d-flex flex-column text-black ms-5 details" style={{ width: '300px' }}>
+
+        <h5>
+          Date: {eventDetails.eventDate}
         </h5>
-        {/* <h6>
-          by the {eventDetails.familyObject?.familyName} family
-        </h6> */}
+        <h5>
+          Location: {eventDetails.eventLocation}
+        </h5>
+        <h5>
+          Description: {eventDetails.eventDescription}
+        </h5>
       </div>
     </div>
   );
