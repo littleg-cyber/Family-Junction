@@ -23,12 +23,15 @@ export default function FamilyCard({ familyObj, onUpdate }) {
           <Card.Body>
             <Card.Title>{familyObj.familyName}</Card.Title>
             {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
-            <Link href={`/family/edit/${familyObj.firebaseKey}`} passHref>
-              <Button variant="light" size="sm">📝</Button>
-            </Link>
-            <Button variant="light" size="sm" onClick={deleteThisFamily} className="m-2">
-              🗑️
-            </Button>
+            <div className="justify-content-end">
+              <Link href={`/family/edit/${familyObj.firebaseKey}`} passHref>
+                <Button variant="light" size="sm">📝</Button>
+              </Link>
+              <Button variant="light" size="sm" onClick={deleteThisFamily} className="m-2">
+                🗑️
+              </Button>
+            </div>
+
           </Card.Body>
         </Card>
       </Link>
