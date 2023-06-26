@@ -44,7 +44,7 @@ function FamilyForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'}Family</h2>
+      <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Family</h2>
       {/* family name */}
       <FloatingLabel controlId="floatingInput1" label="Family Name" className="mb-3">
         <Form.Control
@@ -58,7 +58,7 @@ function FamilyForm({ obj }) {
       </FloatingLabel>
 
       {/* IMAGE INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="Book Image" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Family Image" className="mb-3">
         <Form.Control
           type="url"
           placeholder="Enter an image url"
