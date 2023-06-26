@@ -10,30 +10,29 @@ export default function EventCard({ eventObj, onUpdate }) {
   // SO WE PASS THE FUNCTION FROM THE PARENT THAT GETS THE BOOKS
   const deleteThisEvent = () => {
     if (window.confirm(`Delete ${eventObj.eventTitle}?`)) {
-      console.warn('eventObj', eventObj);
       deleteSingleEvent(eventObj.firebaseKey).then(() => onUpdate());
     }
   };
 
   return (
     <>
-      <Link href={`/event/${eventObj.firebaseKey}`} passHref>
-        <Card style={{ width: '18rem', margin: '10px' }}>
-          <Card.Body>
+      <Card style={{ width: '18rem', margin: '10px' }}>
+        <Card.Body>
+          <Link href={`/event/${eventObj.firebaseKey}`} passHref>
             <Card.Img variant="top" src={eventObj.image} alt={eventObj.eventTitle} style={{ height: '400px' }} />
-            <Card.Title>{eventObj.eventTitle}</Card.Title>
-            {/* DYNAMIC LINK TO VIEW THE BOOK DETAILS  */}
+          </Link>
+          <Card.Title>{eventObj.eventTitle}</Card.Title>
+          {/* DYNAMIC LINK TO VIEW THE BOOK DETAILS  */}
 
-            {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
-            <Link href={`/event/edit/${eventObj.firebaseKey}`} passHref>
-              <Button variant="light" size="sm">📝</Button>
-            </Link>
-            <Button variant="light" size="sm" onClick={deleteThisEvent} className="m-2">
-              🗑️
-            </Button>
-          </Card.Body>
-        </Card>
-      </Link>
+          {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
+          <Link href={`/event/edit/${eventObj.firebaseKey}`} passHref>
+            <Button variant="light" size="sm">📝</Button>
+          </Link>
+          <Button variant="light" size="sm" onClick={deleteThisEvent} className="m-2">
+            🗑️
+          </Button>
+        </Card.Body>
+      </Card>
     </>
 
   );

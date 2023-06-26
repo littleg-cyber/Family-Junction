@@ -54,7 +54,7 @@ function EventForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'}Event</h2>
+      <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Event</h2>
       {/* event title input */}
       <FloatingLabel controlId="floatingInput1" label="Event Title" className="mb-3">
         <Form.Control
